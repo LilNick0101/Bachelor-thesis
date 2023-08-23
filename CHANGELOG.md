@@ -1,5 +1,7 @@
 # Changelog
 
+Ex1
+
 All notable changes to this project are documented in this file. On the [releases page](https://github.com/Wandmalfarbe/pandoc-latex-template/releases/) you can see all released versions of the Eisvogel template and download the [latest version](https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest).
 
 ## [2.4.0] - 2023-04-17
