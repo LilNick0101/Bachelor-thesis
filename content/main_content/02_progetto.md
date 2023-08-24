@@ -22,10 +22,12 @@ La prima volta che ho conosciuto l'azienda è stata durante il primo periodo del
 
 Più tardi mi sono presentato all'evento *Stage IT 2023* dove sono andato a conoscenza dei loro progetti, quello che cercavo io per il stage era un qualcosa che mi mettesse alla prova in qualcosa di nuovo (anche se come preferenze accingevo comunque allo sviluppo mobile o web), ho scelto questo progetto dato che mi interessava l'ambito dello sviluppo _mobile_, ambito che io personalmente non avevo mai sperimentato ma mi interessava.
 
-## Formazione <!--One at a time, that's what the old man says-->
-<!--The old man actually said "You see an insect, you crush it!"-->
-Nelle prime due settimane di stage il tirocinio si è concentrato sulla formazione tecnica necessaria
+## Formazione 
 
-Ho cominciato con lo studio delle tecnologie con il linguaggio di programmazione **Kotlin**, studiandone la sintassi e i costrutti, in seguito sono passato a studiare il framework di UI _Jetpack Compose_ e i fondamenti dell'architettura di un applicazione Android, quindi l'utilizzo del pattern Model-view-VieModel in un applicazione Android.
+Nelle prime due settimane di stage il tirocinio si è concentrato sulla formazione tecnica necessaria, utilizzando anche risorse online come il corso ufficiale **Android Basic Compose** e la documentzione ufficiale di Google
 
-Il periodo di training poi finì con una breve 
+Ho cominciato con lo studio delle tecnologie con il linguaggio di programmazione **Kotlin**, studiandone la sintassi e i costrutti, in seguito sono passato a studiare il framework di UI _Jetpack Compose_ e i fondamenti dell'architettura di un applicazione Android, quindi l'utilizzo del pattern Model-view-VieModel in un applicazione Android, l'architettura a tre strati (UI , dominio, data), e il Dependency Injection tramite la libreria _hilt_.
+
+Il periodo di training poi finì con una breve demo tramite lo sviluppo controllato di un’app, con poche funzionalità utili ma
+molto ben strutturata, durante la demo, ogni feature creata passava sotto Peer Review tramite Pull Request su **Bitbucket**.
+
