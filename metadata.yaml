@@ -1,0 +1,44 @@
+documentclass: book
+
+classoption:
+  - 10pt
+  - a4paper
+  - oneside
+  - openany
+  - english
+  - italian
+
+author: Nicola Ravagnan
+
+relatore: Francesco Ranzato
+
+title: titoloTesi
+
+istituto: Università degli Studi di Padova
+
+dipartimento: Dipartimento di Matematica "Tullio Levi-Civita"
+
+corso: Corso di Laurea in Informatica
+
+annoAccademico: 2022/2023
+
+lang: it
+
+logo: img/unipd-logo.png
+
+link-citations: true
+
+lof: yes
+
+lot: yes
+
+toc: yes
+
+hyperrefoptions:
+ - pdfa
+
+colorlinks: true
+
+glossary: yes
+
+acronyms: yes
