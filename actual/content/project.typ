@@ -1,6 +1,12 @@
 
 #let project = [= Il progetto
 
+== Scopo del progetto
+
+L'idea di base è quella di creare una piattaforma di ricerca di luoghi dove poter lavorare in remoto o in _smart working_, quindi se per qualche ragione personale o di spazio questa idea o richiesta è stata spinta dalla popolarità della modalità di lavoro in remoto in conseguenza al periodo pandemico del COVID, dato che molte persone hanno visto un migliore bilancio vita-lavoro, e le aziende che hanno visto un risparmio nelle risorse.
+
+Il progetto completo è composto in tre parti ognuna sviluppata da un tirocinante diverso: La parte di back-end, sviluppata in TypeScript e con i servizi _AWS_, e le due parti mobile, sviluppate rispettivamente per _iOS_ e _Android_, io mi sono occupato di quest'ultima.
+
 == Strumenti di sviluppo
 
 === Sistema operativo
