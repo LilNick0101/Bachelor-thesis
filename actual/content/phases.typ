@@ -1,5 +1,4 @@
-
-#let phases = [= Analisi dei Requisiti
+= Analisi dei Requisiti
 
 L'analisi dei requisiti è stata fatta insieme al tutor aziendale e agli altri collaboratori e tirocinanti
 
@@ -12,4 +11,3 @@ TODO DIAGRAMMI
 = Progettazione
 
 = Codifica
-]

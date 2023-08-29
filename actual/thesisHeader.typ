@@ -53,7 +53,7 @@ align(center,[
         paper: "a4",
         margin: (x: 1.8cm, y: 1.6cm),
         number-align: left,
-        numbering: "i"
+        numbering: "I"
     )
     set par(
         leading: 1.5em
@@ -74,7 +74,7 @@ align(center,[
         target: figure.where(kind: image),
     )
 
-    counter(heading).update(1)
+    counter(heading).update(0)
     counter(page).update(0)
 
     doc

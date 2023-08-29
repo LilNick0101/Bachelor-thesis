@@ -1,11 +1,6 @@
 #import "./thesisHeader.typ": *
 #import "@preview/minitoc:0.1.0": *
 #import "@preview/glossarium:0.2.0": make-glossary, print-glossary, gls, glspl
-#import "./content/introduction.typ": introduction
-#import "./content/project.typ": project
-#import "./content/phases.typ": phases
-#import "./content/conclusions.typ": conclusions
-
 
 #show: doc => mainPage(
     [= Sommario
@@ -39,12 +34,12 @@
   numbering: "1"
 )
 
-#introduction
+#include "./content/introduction.typ"
 
-#project
+#include "./content/project.typ"
 
-#phases
+#include "./content/phases.typ" 
 
-#conclusions
+#include "./content/conclusions.typ"
 
 #print-glossary(glossaryPool,show-all: true)
