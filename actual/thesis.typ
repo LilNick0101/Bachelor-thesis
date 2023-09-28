@@ -1,16 +1,16 @@
 #import "./thesisHeader.typ": *
 #import "@preview/minitoc:0.1.0": *
-#import "@preview/glossarium:0.2.0": make-glossary, print-glossary, gls, glspl
+#import "@preview/glossarium:0.2.0": print-glossary, gls, glspl
 
 #show: doc => mainPage(
-    [= Sommario
+    [= Abstract
     
     Questo documento descrive il lavoro svolto durante il periodo di stage della durata di 320 ore presso l'azienda zero12 s.r.l.
-    Lo scopo dello stage è stata la partecipazione al progetto _Smart Offices_, tale progetto consisteva nello sviluppo di una applicazione _mobile_ per la consultazione, ricerca, caricamento e salvataggio di luoghi dove fare _smart working_,
+    Lo scopo dello stage è stata la partecipazione al progetto _Smart Offices_, tale progetto consisteva nello sviluppo di una piattaforma per la consultazione, ricerca, caricamento e salvataggio di luoghi dove fare _smart working_, utenti registrati inoltre possono caricare recensioni dei luoghi con valutazioni. Io mi sono occupato di sviluppare l'applicazione mobile Android, che comunicava con il back-end _RestFul JSON_ sviluppato da altri colleghi, l'applicazione è stata sviluppata usando tecnologie native Android, in particolare il linguaggio Kotlin e il moderno toolkit di UI _Jetpack Compose_.
     
-    In primo luogo si è svolta una parte di training dove si apprendevano i vari concetti fondamentali, parte di training seguita da una breve demo per mettere in pratica ciò che è stato appreso.
-    Dopo di che si è proceduto con lo sviluppo effettivo dell applicazione, con design dell'interfaccia grafica e codifica dell'applicazione.
-    Si è usata una metologia di lavoro agile, con stand-up giornalieri di 15 minuti 
+    Inizialmente il progetto è stato preceduto da una parte di training dove si apprendevano i vari concetti fondamentali di Kotlin, di Jetpack Compose e dell'architettura di un applicazione Android, parte di training seguita da una breve demo per mettere in pratica ciò che è stato appreso.
+    In seguito si è proceduto con lo sviluppo effettivo dell applicazione, con design dell'esperienza utente e codifica delle varie funzionalità dell'applicazione.
+    Si è usata una metodologia di lavoro agile, con stand-up giornalieri di 15 minuti per allinearsi con il lavoro fatto.
     ],
     [= Ringraziamenti
     
@@ -25,7 +25,8 @@
     doc
 )
 
-#set heading(numbering: "1.")
+
+#set heading(numbering: "1.1.1")
 
 #set page(
   paper: "a4",

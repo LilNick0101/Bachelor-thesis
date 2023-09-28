@@ -2,7 +2,10 @@ terms:
 - key: "typst"
   short: "Typst"
   desc: "A better LaTeX alternative!"
-- key: "Sven"
-  short: "Sven"
-  desc: "An insidous character from The Exterminator"
+- key: "Agile"
+  short: "Agile"
+  desc: "La metologia agile è un insieme di metodi di sviluppo del software derivati dai principi del Manifesto per lo sviluppo agile del software"
+- key: "MVP"
+  short: "Minimum Viable Product"
+  desc: "Il Minimum Viable Product è una versione di un nuovo prodotto che consente al team di raccogliere la massima quantità d'informazioni con il minimo sforzo"
 

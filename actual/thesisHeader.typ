@@ -55,6 +55,9 @@ align(center,[
         number-align: left,
         numbering: "I"
     )
+    set text(
+        lang: "it"
+    )
     set par(
         leading: 1.5em
     )
@@ -70,12 +73,20 @@ align(center,[
         title: [Tabella dei contenuti]
     )
     outline(
+        title: [Lista delle tabelle],
+        target: figure.where(kind: table),
+    )
+    outline(
         title: [Tabella delle figure],
         target: figure.where(kind: image),
     )
 
     counter(heading).update(0)
     counter(page).update(0)
+
+    show link: set text(
+        style: "italic"
+    )
 
     doc
 }
