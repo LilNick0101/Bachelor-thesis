@@ -39,7 +39,11 @@
 
 #include "./content/project.typ"
 
-#include "./content/phases.typ" 
+#include "./content/RA.typ" 
+
+#include "./content/design.typ" 
+
+#include "./content/AppOverview.typ" 
 
 #include "./content/conclusions.typ"
 
