@@ -25,15 +25,7 @@
     doc
 )
 
-
 #set heading(numbering: "1.1.1")
-
-#set page(
-  paper: "a4",
-  margin: (x: 1.8cm, y: 1.6cm),
-  number-align: left,
-  numbering: "1"
-)
 
 #include "./content/introduction.typ"
 
@@ -43,8 +35,38 @@
 
 #include "./content/design.typ" 
 
-#include "./content/AppOverview.typ" 
+#include "./content/coding.typ" 
 
 #include "./content/conclusions.typ"
 
-#print-glossary(glossaryPool,show-all: true)
+#pagebreak()
+#counter(heading).update(0)
+#counter(page).update(0)
+
+#let appendices(body) = {
+  pagebreak()
+  counter(heading).update(0)
+  counter("appendices").update(1)
+
+  set heading(
+    numbering: (..nums) => {
+      let vals = nums.pos()
+      let value = "ABCDEFGHIJ".at(vals.at(0) - 1)
+      if vals.len() == 1 {
+        return ""
+      }
+      else {
+        return value + "." + nums.pos().slice(1).map(str).join(".")
+      }
+    }
+  );
+  
+  [#body]
+}
+
+#show: appendices
+
+#include "./content/appendix.typ"
+
+
+// MUST DO 

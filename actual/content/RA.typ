@@ -1,12 +1,37 @@
 #import "@preview/glossarium:0.2.0": gls
-#import "@preview/tablex:0.0.5": tablex, hlinex, vlinex, colspanx, rowspanx
 
 #set heading(numbering: "1.1.1")
 
 = Analisi dei Requisiti
 
-L'analisi dei requisiti è stata fatta insieme al tutor aziendale e agli altri collaboratori e tirocinanti
+I requisiti dell'applicazione sono stati individuati attraverso un'analisi dei casi d'uso e dei requisiti funzionali insieme al tutor aziendale ed ad altri collaboratori.
 
+All'inizio è stato pianificato che l'applicazione doveva avere le seguenti funzionalità:
+
+- *F1*: Lista dei luoghi (con funzione di ordinamento e filtraggio)
+- *F2*: Mappa dei luoghi (con funzione di filtraggio)
+- *F3*: Dettaglio di un luogo
+- *F4*: Caricamento di un luogo
+- *F5*: Pagina di login
+- *F6*: Pagina del profilo utente, con lista dei luoghi caricati e dei luoghi salvati
+- *F7*: Registrazione di un nuovo account
+- *F8*: Lista delle recensioni di un luogo
+- *F19*: Caricamento di una nuova recensione di un luogo
+
+== Tipi di utenti
+
+I tipi di utenti che utilizzano l'applicazione sono:
+
+#figure(
+    image("../resources/images/utenti.svg", width: 80%),
+    caption: [Relazione tra utenti registrati e non registrati.]
+) <Utenti>
+
+- *Visitatore*: un utente generico, registrato o non che utilizza l'applicazione per visualizzare le informazioni sulle location;
+- *Ospite*: un utente che non ha effettuato l'accesso al suo account e che può quindi accedere solo alle funzionalità pubbliche dell'applicazione;
+- *Utente registrato*: un utente che ha effettuato l'accesso al suo account e che può quindi accedere alle funzionalità riservate agli utenti registrati, come caricare un nuovo luogo, salvare un luogo nei preferiti o caricare una nuova recensione.
+
+/*
 == Casi d'uso
 
 I casi d'uso sono classificati con la seguente codifica:
@@ -182,7 +207,7 @@ Gli attori che utilizzano l'applicazione sono:
     + L'utente seleziona il caricamento di una nuova location
     + L'utente inserisce i dati richiesti per inserire la location, tra i quali: nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini
     + L'utente conferma il caricamento della nuova location
-- *Scenarii alternativi*:
+- *Scenari alternativi*:
     - L'utente visualizza un messaggio a causa della mancanza delle informazioni richieste
     - L'utente visualizza un messaggio di errore a causa di un errore nel caricamento della nuova location 
 
@@ -256,7 +281,7 @@ Gli attori che utilizzano l'applicazione sono:
 - *Scenario alternativo*:
     - L'utente visualizza un messaggio informativo che indica che la lista delle location caricate è vuota
 
-=== SUCD-4: Visualizzazione recensioni location
+=== SUCO-14: Visualizzazione recensioni location
 
 - *Descrizione*: L'utente vuole visualizzare le recensioni di una location
 - *Attore principale*: Visitatore
@@ -309,7 +334,7 @@ Gli attori che utilizzano l'applicazione sono:
     + L'utente seleziona la lista delle recensioni caricate
     + L'utente visualizza la lista delle recensioni caricate
 
-=== SUCO-14: Ordinamento lista delle location
+=== SUCO-15: Ordinamento lista delle location
 
 - *Descrizione*: L'utente vuole ordinare la lista delle location
 - *Attore principale*: Visitatore
@@ -321,7 +346,7 @@ Gli attori che utilizzano l'applicazione sono:
     + L'utente seleziona di ordinare la lista per distanza, valutazione o data d'inserimento
     + L'utente visualizza la lista delle location ordinata secondo l'ordinamento selezionato
 
-=== SUCO-15: Filtraggio lista delle location
+=== SUCO-16: Filtraggio lista delle location
 
 - *Descrizione*: L'utente vuole filtrare la lista delle location
 - *Attore principale*: Visitatore
@@ -333,108 +358,57 @@ Gli attori che utilizzano l'applicazione sono:
     + L'utente seleziona di filtrare la lista delle location
     + L'utente può filtrare la lista per nome, prezzo, caratteristiche o orario di apertura
     + L'utente visualizza la lista delle location filtrata secondo i filtri selezionati
-
+*/
 == Requisiti
 
-I requisiti sono classificati con la seguente codifica:
+Dalle funzionalità riportate sopra sono stati ricavati dei requisiti associati (per la lista completa dei requisiti, vedere #link(label("requirements-list"),[lista requsiti]) nell'appendice).
 
-#align(
-    center
-)[
-    *SR[Tipo]-numero*
-]
+Alcuni requisiti sono:
+- Per la lista dei luoghi, l'utente selezionando un luogo viene portato alla pagina di dettaglio del luogo;
+- Per la mappa dei luoghi, l'utente selezionando un luogo viene portato alla pagina di dettaglio del luogo similmente alla lista dei luoghi;
+- Per il dettaglio di un luogo, dovrebbero essere visualizzati i dettagli del luogo, tra cui nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini;
+- Per il caricamento di un luogo, l'utente deve inserire i dati richiesti per inserire il luogo, tra i quali: nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini;
+- Per la pagina di login, l'utente deve inserire email e password per effettuare il login, o accedere con un account Google;
+- Per la pagina del profilo utente, l'utente può visualizzare la lista dei luoghi caricati e dei luoghi salvati;
+- Per la registrazione di un nuovo account, l'utente deve inserire email e password;
+- Per il salvataggio di un luogo nei preferiti, l'utente deve selezionare il pulsante di salvataggio o può disfare il salvataggio nei preferiti;
+- Per il caricamento di una recensione, l'utente deve inserire il testo della recensione e può inserire una valutazione.
 
-- *SR*: Acronimo di _Smart Offices Requirment_
-- *Tipo*: Tipo di requitsito, può essere:
-    - *O*: Obbligatorio, ovvero un requisito che è richiesto per raggiungere il #gls("MVP")
-    - *D*: Desiderabile, ovvero un requisito che non è obbligatorio ma consente di dare valore aggiunto all'applicazione
-    - *F*: Facoltativo, ovvero un requisito che non è importante per l'applicazione ma che può essere implementato se si ha tempo
-
-#let SROcounter = counter("SROcounter")
-#let printSRO() = block[
-  #SROcounter.step()
-  *SRO-#SROcounter.display()*
-]
-
-#let SRDcounter = counter("SRDcounter")
-#let printSRD() = block[
-  #SRDcounter.step()
-  *SRD-#SRDcounter.display()*
-]
-
-#let SRFcounter = counter("SRFcounter")
-#let printSRF() = block[
-  #SRFcounter.step()
-  *SRF-#SRFcounter.display()*
-]
-
-#show figure: set block(breakable: true)
-
-#figure(
-    tablex(
-        columns: (0.5fr, 1fr, 0.5fr),
-        align: horizon,
-        [*Requisito*], [*Descrizione*], [*Casi d'uso*],
-        [#printSRO()],[L'utente vuole visualizzare la lista delle location], [SUCO-1],
-        [#printSRO()],[L'utente vuole selezionare una location dalla lista per vederne i dettagli], [SUCO-1],
-        [#printSRO()],[L'utente vuole visualizzare i dettagli di una location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare dove si trova una location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare i contatti di una location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare le caratteristiche di una location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare gli orari di apertura della location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare le immagini di una location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare il numero di recensioni di una location], [SUCO-2],
-        [#printSRO()],[L'utente vuole visualizzare la mappa delle location], [SUCO-3],
-        [#printSRO()],[L'utente vuole selezionare una location dalla mappa per vederne i dettagli], [SUCO-3],
-        [#printSRO()],[L'utente visualizza un messaggio a causa di un errore nel caricamento dei dati], [SUCO-4],
-        [#printSRD()],[L'utente visualizza un messaggio che indica che la lista delle location è vuota], [SUCD-1],
-        [#printSRO()],[L'utente vuole effettuare il login all'suo profilo utente], [SUCO-5],
-        [#printSRO()],[L'utente vuole effettuare il login all'suo profilo utente utilizzando un Account Google], [SUCO-6],
-        [#printSRD()],[L'utente vuole creare un nuovo account per registrarsi sull'applicazione], [SUCD-2],
-        [#printSRD()],[L'utente inserisce un nome utente per registrarsi], [SUCD-2],
-        [#printSRD()],[L'utente inserisce una email per registrarsi], [SUCD-2],
-        [#printSRO()],[L'utente vuole effettuare il logout dal suo profilo utente], [SUCO-7],
-        [#printSRO()],[L'utente vuole visualizzare il suo profilo utente], [SUCO-8],
-        [#printSRO()],[L'utente visualizza i suoi dati personali], [SUCO-8],
-        [#printSRO()],[L'utente vuole caricare una nuova location], [SUCO-9],
-        [#printSRO()],[L'utente inserisce il nome della location da caricare], [SUCO-9],
-        [#printSRO()],[L'utente inserisce dove si trova la location], [SUCO-9],
-        [#printSRO()],[L'utente inserisce i contatti della location], [SUCO-9],
-        [#printSRO()],[L'utente inserisce una descrizione della location], [SUCO-9],
-        [#printSRO()],[L'utente inserisce gli orari di apertura della location], [SUCO-9],
-        [#printSRD()],[L'utente visualizza un messaggio che indica che non ha inserito tutte le informazioni richieste della location da caricare], [SUCD-2],
-        [#printSRO()],[L'utente visualizza un messaggio a causa di un errore nel caricamento di una location], [SUCO-11],
-        [#printSRO()],[L'utente vuole salvare una location nei preferiti], [SUCO-12],
-        [#printSRO()],[L'utente vuole disfare l'azione di salvataggio nei prefeirit],[SUCO-12],
-        [#printSRO()],[L'utente vuole visualizzare la lista delle location preferite salvate], [SUCO-13],
-        [#printSRO()],[L'utente vuole selezionare una location dalla lista delle location preferite salvate], [SUCO-13],
-        [#printSRD()],[L'utente vuole visualizzare la lista delle location caricate], [SUCD-3],
-        [#printSRD()],[L'utente vuole selezionare una location la lista delle location caricate], [SUCD-3],
-        [#printSRO()],[L'utente vuole visualizzare la lista delle recensioni di una location], [SUCD-4],
-        [#printSRO()],[L'utente vuole caricare una nuova recensione di una location], [SUCD-5],
-        [#printSRO()],[L'utente vuole inserire il testo di una nuova recensione], [SUCD-5],
-        [#printSRO()],[L'utente vuole inserire una valutazione insieme alla recensione], [SUCD-5],
-        [#printSRD()],[L'utente visualizza un messaggio a causa di un errore nel caricamento della nuova recensione], [SUCD-6],
-        [#printSRF()],[L'utente vuole visualizzare la lista delle recensioni caricate da lui], [SUCF-1],
-        [#printSRO()],[L'utente vuole ordinare la lista delle location per distanza], [SUCO-14],
-        [#printSRO()],[L'utente vuole ordinare la lista delle location per valutazione], [SUCO-14],
-        [#printSRO()],[L'utente vuole ordinare la lista delle location per data di inserimento], [SUCO-14],
-        [#printSRO()],[L'utente vuole filtrare la lista delle location per nome], [SUCO-15],
-        [#printSRO()],[L'utente vuole filtrare la lista delle location per prezzo], [SUCO-15],
-        [#printSRO()],[L'utente vuole filtrare la lista delle location per le caratteristiche scelte], [SUCO-15],
-        [#printSRO()],[L'utente vuole filtrare la lista delle location per orario di apertura], [SUCO-15],
-    ),
-    caption: [Requsiti di Smart Officies]
-)
+Nell'analisi dei requisiti sono stati individuati requisiti che sono condivisi tra più funzionalità, come per esempio il filtraggio dei luoghi che è presente sia nella lista che nella mappa e il salvataggio di un luogo nei preferiti che è presente sia nella lista, nella mappa che nel dettaglio del luogo.
 
 #figure(
     table(
+        fill: (_, row) => if calc.odd(row) { luma(240) } else { white },
+        columns: (1fr, 1fr),
+        align: horizon,
+        [*Funzionalità*], [*Numero*],
+        [F1],[13],
+        [F2],[8],
+        [F3],[9],
+        [F4],[12],
+        [F5],[2],
+        [F6],[8],
+        [F7],[3],
+        [F8],[1],
+        [F9],[4]
+    ),
+    caption: [Conteggio requsiti per funzionalità di Smart Officies]
+)
+
+Oltre ai requisiti funzionali, ci sono dei requisiti di vincolo che sono stati individuati durante l'analisi dei requisiti, come l'utilizzo del linguaggio di programmazione Kotlin e del toolkit UI Jetpack Compose per lo sviluppo dell'applicazione.
+
+Per garantire la qualità del codice e dell'applicazione, sono stati individuati dei requisiti di qualità, quindi il codice del progetto deve trovarsi sulla Repository aziendale e deve passare tutte le Pull requests e l'applicazione deve essere funzionante anche in assenza di connesione ad internet.
+
+#figure(
+    table(
+        fill: (_, row) => if calc.odd(row) { luma(240) } else { white },
         columns: (1fr, 1fr),
         align: horizon,
         [*Tipo di requisito*], [*Numero*],
-        [Obbligatori],[#SROcounter.display()],
-        [Desiderabili],[#SRDcounter.display()],
-        [Facoltativi],[#SRFcounter.display()],
+        [Funzionali],[49],
+        [Di vincolo],[5],
+        [Di qualità],[2],
+        [*Totali*],[56]
     ),
     caption: [Conteggio requsiti di Smart Officies]
 )

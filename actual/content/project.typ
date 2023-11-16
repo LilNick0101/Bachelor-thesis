@@ -1,24 +1,14 @@
-= Il progetto
 
-== Scopo del progetto
 
-Il progetto è nato con l'idea di creare una piattaforma di ricerca di luoghi dove poter lavorare in remoto o in _smart working_, questa idea è stata spinta dalla popolarità della modalità di lavoro in remoto in conseguenza al periodo pandemico del COVID, modalità di lavoro rimasta rilevante ancor oggi, dato che molte persone hanno visto un migliore bilancio vita-lavoro, e le aziende che hanno visto un risparmio nelle risorse.
+= Pianificazione
 
-Il progetto quindi si propone di creare una piattaforma che permetta di trovare luoghi dove poter lavorare in remoto, quindi luoghi come bar, ristoranti, biblioteche, ecc. che offrono la possibilità di lavorare in remoto; La piattaforma offre funzionalità di ricerca e filtri per trovare il luogo più adatto alle proprie esigenze, un utente può inoltre registrarsi e gli utenti registrati oltre ad consultare i luoghi possono aggiungerne nuovi luoghi, lasciare una recensione dei luoghi e salvare i luoghi nei preferiti. Il progetto nel insieme è suddiviso in tre parti:
-
-- Parte *back-end* che si occupa di esporre i servizi per la ricerca luoghi, il caricamento dei luoghi, dei utenti e delle recensioni; fornisce i dati all'applicazione tramite API REST ed è scritto in Typescript. 
-
-- Parte *mobile* che si occupa di mostrare i dati forniti dal back-end all'utente su dispositivi mobili, questa si divide in due applicazioni, una scritta in Kotlin per Android e l'altra in Swift per iOS, la parte iOS, sviluppata da un altro collega, utilizza il framework di UI _SwiftUI_ mentre la parte Android utilizza il framework di UI _Jetpack Compose_.
-
-Il mio progetto di stage si è concentrato sul'applicazione scritta in Kotlin per Android. Il mio scopo era quello di effetuare le chiamate dal back-end ed implementare le funzionalità dell applicazione, quindi la ricerca dei luoghi, la visualizzazione dei dettagli di un luogo, il caricamento di un nuovo luogo, la registrazione e login ,la visualizzazione delle recensioni di un luogo e la creazione di nuove recensioni.
-
-== Vincoli e obiettivi
+Prima dell'inizio del tirocinio è stato pianificato un piano di lavor suddiviso in 5 periodi, ognuno di due settimane ad eccezione del primo e del ultimo periodo che durano una sola settimana, con un obiettivo da raggiungere per ogni periodo.
 
 === Vincoli temporali
 
 Lo _stage_ aveva una durata prevista di 8 settimane con 40 ore per settimana, con orario di lavoro dalle 8:30 alle 17:30 con un'ora di pausa pranzo dalle ore 13:00 alle 14:00 e altre due pause intermedie, una alla mattina dalle 10:30 alle 11:00 e l'altra dalle 15:30 alle 16:00, per un totale di 8 ore giornaliere.
 
-In seguito il piano di lavoro pianificato per lo stage:
+In seguito il piano di lavoro inizialmente pianificato per lo stage:
 
 #figure(
     table(
@@ -34,23 +24,42 @@ In seguito il piano di lavoro pianificato per lo stage:
     caption: [Piano di lavoro]
 )
 
-=== Obiettivi iniziali
+=== Obiettivi formativi
 
-In seguito vengono elencati gli obiettivi iniziali pianificati insieme al piano di lavoro:
+Gli obiettivi formativi del stage sono stati i seguenti:
 
-+ Sviluppare applicazione mobile funzionante
-+ Sviluppare test automatici
-+ Documentazione dell'intero progetto di stage 
-+ Articolo per il blog di zero12 dove raccontare l'esperienza vissuta in azienda
+- *O-1*: Approfondire le tematiche di sviluppo mobile
+- *O-2*: Approfondire le tematiche di interazione con servizi esterni
+- *O-3*: Apprendere metodologie di lavoro agile
+
+=== Analisi dei rischi
+
+I possibili rischi previsti per il tirocinio sono stati i seguenti:
+
+- *R-1*: Difficoltà apprendimento del linguaggio di programmazione e sviluppo mobile
+- *R-2*: Difficoltà apprendimento API backend
+- *R-3*: Difficoltà nello sviluppo applicazione mobile
+- *R-4*: Difficoltà nello sviluppo e gestione del deploy attraverso sistemi di CI/CD in ambito mobile
+
+=== Prodotti aspettati
+
+In seguito vengono elencati gli prodotti inizialmente pianificati insieme al piano di lavoro:
+
++ *P-1*: Sviluppare applicazione mobile funzionante
++ *P-2*: Sviluppare test automatici
++ *P-3*: Documentazione dell'intero progetto di stage 
++ *P-4*: Articolo per il blog di zero12 dove raccontare l'esperienza vissuta in azienda
 
 == Tecnologie utilizzate
 
-- *Kotlin*: linguaggio di programmazionegeneral purpose, multi-paradigma, svillupato da JetBrains e utilizzato per lo sviluppo dell'applicazione Android e per la scrittura dei test automatici 
-- *Jetpack Compose*: moderno toolkit di UI per Android per lo sviluppo di UI native in Kotlin, sviluppato da Google, utilizzato per lo sviluppo dell'interfaccia grafica dell'applicazione Android.
-- *Material Design 3*: sistema di design sviluppato da Google, utilizzato per lo sviluppo dell'interfaccia grafica dell'applicazione Android ed utilizzato con _Jetpack Compose_.
-- *Hilt*: libreria di dependency injection per Android, sviluppata al di sopra della libreria Dagger, utilizzata per la dependency injection delle dipendenze nell'applicazione Android.
-- *Ktor*: framework per la creazione di client e server web asincroni, utilizzato per effetuare chiamate al back-end.
-- *Room*: layer d'astrazione per SQLite, utilizzato per la gestione del database locale.
+- *Kotlin*: linguaggio di programmazione general purpose, multi-paradigma, svillupato da JetBrains e utilizzato per lo sviluppo dell'applicazione Android e per la scrittura dei test automatici;
+- *Gradle*: sistema di automazione dello sviluppo basato su Apache Ant e Maven, utilizzato per la compilazione del codice sorgente e la gestione delle dipendenze, rispetto a Maven, Gradle usa un DSL basato su _Groovy_ invece di XML; //Citation needed
+- *Jetpack Compose*: moderno toolkit di UI per Android per lo sviluppo di UI native in Kotlin, sviluppato da Google, utilizzato per lo sviluppo dell'interfaccia grafica dell'applicazione Android. permette di implementare interfaccie grafiche usando un linguaggio conciso ed è compatibile con codice Android già esistente;
+- *Material Design 3*: sistema di design sviluppato da Google, utilizzato per lo sviluppo dell'interfaccia grafica dell'applicazione Android ed utilizzato con _Jetpack Compose_;
+- *Hilt*: libreria di dependency injection per Android, sviluppata al di sopra della libreria Dagger, utilizzata per la dependency injection delle dipendenze nell'applicazione Android;
+- *Ktor*: framework per la creazione di client e server web asincroni, utilizzato per effetuare chiamate al back-end;
+- *Room*: layer d'astrazione per SQLite, un database relazionale, utilizzato per la creazione e la gestione del database locale.
+- *AWS Cognito*: servizio utilizzato per l'autenticazione dei utenti all'interno dell'applicazione;
 
 == Strumenti di sviluppo
 
@@ -60,7 +69,7 @@ Essendo sempre stato in presenza durante l'intera durata dello stage, ho usato l
 
 === Android Studio
 
-Per la codifica del prodotto mi sono servito di _Android Studio_, l'ambiente di sviluppo integrato gratuito fornito da _JetBrains_, per il debugging e l'installazione dell' applicazione su dispositivi _Android_ mi sono servito del tool _Android Debug Bridge_ (o _ADB_).
+Per la codifica del prodotto mi sono servito di _Android Studio_, l'ambiente di sviluppo integrato gratuito fornito da _JetBrains_, essendo ufficiale per lo sviluppo di applicazioni Android; per il debugging e l'installazione dell' applicazione su dispositivi _Android_ mi sono servito del tool _Android Debug Bridge_ (o _ADB_).
 
 === Altri strumenti
 
@@ -85,11 +94,11 @@ Per la comunicazione e la collaborazione sono stati utilizzati i seguenti strume
 
 == Formazione 
 
-Nelle prime due settimane di stage il tirocinio si è concentrato sulla formazione tecnica necessaria, utilizzando anche risorse online come il corso ufficiale *Android Basic Compose* e la documentzione ufficiale di Google
+Nella prima fase del tirocinio si è concentrato sulla formazione tecnica necessaria, utilizzando anche risorse online come il corso ufficiale *Android Basic Compose* e la documentzione ufficiale di Google
 
-Ho cominciato con lo studio delle tecnologie con il linguaggio di programmazione *Kotlin*, studiandone la sintassi e i costrutti, in seguito sono passato a studiare il framework di UI _Jetpack Compose_ e i fondamenti dell'architettura di un applicazione Android, quindi l'utilizzo del pattern Model-view-VieModel in un applicazione Android, l'architettura a tre strati (UI , dominio, data), e il Dependency Injection tramite la libreria _hilt_.
+Ho cominciato con un rapido studio delle tecnologie con il linguaggio di programmazione *Kotlin*, studiandone la sintassi e i costrutti, in seguito sono passato a studiare il framework di UI _Jetpack Compose_ e i fondamenti dell'architettura di un applicazione Android, quindi l'utilizzo del pattern Model-view-ViewModel in un applicazione Android, l'architettura a tre strati (UI, dominio, data), e il Dependency Injection tramite la libreria _hilt_.
 
 Il periodo di training poi finì con una breve demo tramite lo sviluppo controllato di un'app, con poche funzionalità utili ma
-molto ben strutturata, durante la demo, ogni feature creata passava sotto Peer Review tramite Pull Request su *Bitbucket*.
+molto ben strutturata. Durante la demo, ogni feature creata passava sotto Peer Review tramite Pull Request su *Bitbucket*.
 
 

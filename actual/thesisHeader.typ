@@ -1,4 +1,10 @@
 
+#let script-size = 7.97224pt
+#let footnote-size = 8.50012pt
+#let small-size = 9.24994pt
+#let normal-size = 10.00002pt
+#let large-size = 11.74988pt
+
 #import "@preview/glossarium:0.2.0": make-glossary
 
 #let mainPage(
@@ -24,7 +30,7 @@ align(center,[
             #data.degree
 
             #align(center + horizon,
-                text(17pt)[
+                text(18pt)[
                     *#data.title*
                 ]
             )
@@ -52,11 +58,13 @@ align(center,[
     set page(
         paper: "a4",
         margin: (x: 1.8cm, y: 1.6cm),
-        number-align: left,
+        number-align: right,
         numbering: "I"
     )
     set text(
-        lang: "it"
+        lang: "it",
+        size: normal-size, 
+        font: "New Computer Modern"
     )
     set par(
         leading: 1.5em
@@ -84,9 +92,56 @@ align(center,[
     counter(heading).update(0)
     counter(page).update(0)
 
+    set page(
+        paper: "a4",
+        margin: (x: 1.8cm, y: 1.6cm),
+        number-align: right,
+        header: locate(loc => {
+            let elems = query(
+                selector(heading.where(level:1)).before(loc,inclusive: true),
+                loc,
+            )
+            if elems == () {
+                []
+            } else {
+                align(right, emph(elems.last().body))
+            }}
+        ),
+        header-ascent: 30%,
+        numbering: "1"
+    )
+    
     show link: set text(
         style: "italic"
     )
+
+    show heading: it => {
+    // Create the heading numbering.
+    let number = if it.numbering != none {
+        counter(heading).display(it.numbering)
+        h(7pt, weak: true)
+    }
+
+    // Level 1 headings are centered and smallcaps.
+    // The other ones are run-in.
+    
+    if it.level == 1 {
+        let styled = strong 
+        set text(size: 14pt, weight: 400)
+        [
+            #v(15pt, weak: true)
+            #number
+            #styled(it.body)
+            #v(normal-size, weak: true)
+        ]
+    } else {
+        v(11pt, weak: true)
+        number
+        let styled = if it.level == 2 { strong } else { emph }
+        styled(it.body)
+        h(7pt, weak: true)
+    }
+    }
 
     doc
 }

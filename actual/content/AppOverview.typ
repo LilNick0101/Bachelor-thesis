@@ -1,5 +1,3 @@
-= Panoramica prodotto
-
 == Schermata iniziale: lista dei luoghi
 
 #grid(
@@ -15,7 +13,7 @@
     ),
 )
 
-La schermata principale che viene presentata non appena l'utente apre l'applicazione, viene mostrata la lista dei posti più vicini all'utente.
+La schermata principale che viene presentata non appena l'utente apre l'applicazione, viene mostrata la lista dei luoghi più vicini all'utente.
 Ogni elemento della lista mostra:
     - Il nome del luogo;
     - La citta nel quale si trova; 
@@ -25,9 +23,12 @@ Ogni elemento della lista mostra:
     - La valutazione media con numero di recesioni, se ci sono;
     - Per gli utenti registrati, un segnalibro per salvare i luoghi nei preferiti toccandolo.
 Toccando un luogo nella lista si accede alla schermata dei dettagli del luogo selezionato.
-In alto a sinistra della schermata si può accedere alla mappa dei luoghi, mentre in alto a destra si può accedere al proprio profilo, se si è già registrato, altrimenti un utente effetuare il login. In basso a destra si trova il pulsante di ricerca e filtraggio luoghi e per gli utenti registrati è possibile anche aggiungere un nuovo luogo, tramite il pulsante in basso a destra, sopra al tasto di ricerca e filtraggio luoghi.
+In alto a sinistra della schermata si può accedere alla mappa dei luoghi, mentre in alto a destra si può accedere al proprio profilo, se si è già registrato, altrimenti un utente può effetuare il login. In basso a destra si trova il pulsante di ricerca e filtraggio luoghi e per gli utenti registrati è possibile anche aggiungere un nuovo luogo, tramite il pulsante in basso a destra, sopra al pulsante di ricerca e filtraggio luoghi.
+
+Dal lato tecnico la lista dei luoghi viene prelevata tramite una classe UseCase che si occupa di prelevare i dati dal database e di restituirli al ViewModel, che a sua volta li passa alla View tramite un Flow, che si occupa di aggiornare la lista ogni volta che viene modificata. Se è disponibile la connessione ad internet i dati verrano aggiornati con quelli remoti.
 
 == Mappa dei luoghi
+
 #grid(
   columns: (1fr,1fr),
   gutter: 3pt,
@@ -41,7 +42,9 @@ In alto a sinistra della schermata si può accedere alla mappa dei luoghi, mentr
     ),
 )
 
-Dalla lista dei luoghi si può accedere alla mappa dei luoghi, dove viene mostrata una mappa globale con i luoghi rappresentati come segnaposto, questa mappa è una mappa _Google Maps_ e selezionando un segnaposto viene mostrata la scheda del luogo, che mostra le stesse informazioni della lista fuorchè la distanza dall'utente, se si seleziona la scheda del luogo si accede alla schermata dei dettagli del luogo selezionato. In alto a sinistra della schermata si può tornare alla lista dei luoghi, mentre in alto a destra funziona in modo analogo alla lista dei luoghi. In basso a destra si trovano i medesimi pulsanti che si trovano nella lista dei luoghi, quindi le funzioni di ricerca e filtraggio sono disponibili pure nella mappa dei luoghi (eccetto l'ordinamento)
+Dalla lista dei luoghi si può accedere alla mappa dei luoghi, dove viene mostrata una mappa globale con i luoghi rappresentati come segnaposto, questa mappa è una mappa _Google Maps_ e selezionando un segnaposto viene mostrata la scheda del luogo, che mostra le stesse informazioni della lista /*fuorchè la distanza dall'utente*/, se si seleziona la scheda del luogo si accede alla schermata dei dettagli del luogo selezionato. In alto a sinistra della schermata si può tornare alla lista dei luoghi, mentre in alto a destra funziona in modo analogo alla lista dei luoghi. In basso a destra si trovano i medesimi pulsanti che si trovano nella lista dei luoghi, quindi le funzioni di ricerca e filtraggio sono disponibili pure nella mappa dei luoghi (eccetto l'ordinamento) e un utente registrato può aggiungere un nuovo luogo.
+
+Simile alla lista dei luoghi, i luoghi della mappa vengono prelevati dal database locale tramite un Flow che si aggiorna quando si aggiorna il database locale e se è disponibile la connessione ad internet i dati verrano aggiornati con quelli remoti.
 
 == Dettaglio di un luogo
 
@@ -70,6 +73,9 @@ Selezionando un luogo, o dalla lista o dalla mappa, si può vederne in più dett
 - Le caratteristiche del luogo, se in scuro barrato vuol dire che quella caratteristica non è offerta nel luogo;
 - I contatti del luogo: posizione, numero di telefono, mail ed eventuali link a siti web, tutti quanti interagibili.
 Toccando in alto a sinistra si torna alla schermata precedente e toccando in alto a destra si può salvare il luogo nei preferiti se si è un utente registrato.
+
+I dettagli del luogo selezionato vengono prelevati tramite un UseCase che si occupa di prelevare i dettagli del luogo dal database locale e di restituirli al ViewModel, che a sua volta li passa alla View tramite un Flow, che reagisce quando ci sono aggiornamenti. Se è disponibile la connessione ad internet i dati verrano aggiornati con quelli remoti.
+// Ma c'è ne frega qualcosa di sapere come funziona?
 
 #grid(
   columns: (1fr,1fr),
@@ -109,6 +115,8 @@ Da questa schermata l'utente registrato può;
 - Effettuare il logout.
 In alto a sinistra si può tornare alla schermata precedente.
 
+Il login viene effetuato tramite AWS Cognito che ci ridigerà alla pagina di login con Google se vogliamo registrarci con un Account Google
+
 == Caricamento di un luogo
 
 #grid(
@@ -129,7 +137,7 @@ Selezionando il pulsante di aggiunta (come utente registrato) si può accedere a
 - Il nome del luogo;
 - La descrizione del luogo;
 - L'indirizzo del luogo, con strada, città, codice postale e provincia, toccando il pulsante sotto si può selezionare l'indirizzo da una mappa;
-- Gli orari di apertura del luogo: per ogni giorno si può aggiungere un intervallo orario con ora di apertura e ora di chiusura; // Da rifare screenshots
+- Gli orari di apertura del luogo: per ogni giorno si può aggiungere un intervallo orario con ora di apertura e ora di chiusura;
 - Il prezzo;
 - La possibilità di prenotare un posto;
 - Le caratteristiche del luogo, selezionando quelle che offre;
@@ -148,7 +156,7 @@ Selezionando il pulsante di aggiunta (come utente registrato) si può accedere a
     ),
 )
 
-== Filtri e ricerca
+=== Filtri e ricerca
 
 #grid(
   columns: (1fr,1fr),
@@ -169,7 +177,7 @@ Selezionando il tasto di ricerca in basso a destra nella schermata della lista d
 - Per ora di apertura oppure se sono aperti nel momento in cui si effettua la ricerca;
 - Soli posti che accettano prenotazioni;
 - Per caratteristiche, selezionando quelle che si vogliono cercare.
-Per la lista luoghi, in alto a destra si può ordinare la lista per:
+Per la lista luoghi, in alto a destra della schermata dei filtri si può ordinare la lista per:
 - Distanza;
 - Valutazione media;
 - Data di aggiornamento.
