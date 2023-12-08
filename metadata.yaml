@@ -1,44 +1,7 @@
-documentclass: book
-
-classoption:
-  - 10pt
-  - a4paper
-  - oneside
-  - openany
-  - english
-  - italian
-
-author: Nicola Ravagnan
-
-relatore: Francesco Ranzato
-
-title: titoloTesi
-
-istituto: Università degli Studi di Padova
-
-dipartimento: Dipartimento di Matematica "Tullio Levi-Civita"
-
-corso: Corso di Laurea in Informatica
-
-annoAccademico: 2022/2023
-
-lang: it
-
-logo: img/unipd-logo.png
-
-link-citations: true
-
-lof: yes
-
-lot: yes
-
-toc: yes
-
-hyperrefoptions:
- - pdfa
-
-colorlinks: true
-
-glossary: yes
-
-acronyms: yes
+student : "Ncola Ravagnan"
+relator : "Prof. Franceso Ranzato"
+title : "Progettazione e sviluppo di un'applicazione mobile Android con backend RESTful AWS"
+university : "Università degli studi di Padova"
+department : 'Dipartimento di Matematica “Tullio Levi-Civita"'
+degree : "Corso di laurea in Informatica"
+ay : "2022/2023"

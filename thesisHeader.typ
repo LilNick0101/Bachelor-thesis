@@ -20,7 +20,7 @@ align(center,[
     )
     #show: make-glossary
     #figure(
-        image("../img/unipd-logo.png", width: 35%)
+        image("./resources/images/unipd-logo.png", width: 35%)
     )
     #align(center)[
             *#data.university*
@@ -145,5 +145,3 @@ align(center,[
 
     doc
 }
-
-#let glossaryPool = yaml("./glossary.yaml").terms
