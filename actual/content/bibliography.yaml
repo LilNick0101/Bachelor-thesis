@@ -1,0 +1,88 @@
+kotlin:
+    type: Web
+    title: Kotlin
+    author: JetBrains
+    url: https://kotlinlang.org/
+
+compose:
+    type: Web
+    title: Jetpack Compose
+    author: Google
+    url: https://developer.android.com/jetpack/compose
+
+gradle: 
+    type: Web 
+    title: Gradle
+    author: Gradle.inc
+    url: https://docs.gradle.org/current/userguide/userguide.html
+
+m3:
+    type: Web
+    title: Material Design
+    author: Google
+    url: https://m3.material.io/
+
+hilt:
+    type: Web
+    title: Hilt
+    url: https://dagger.dev/hilt/
+
+ktor:
+    type: Web
+    title: Ktor
+    author: JetBrains
+    url: https://ktor.io/docs/welcome.html
+
+room:
+    type: Web
+    title: Room
+    author: Google
+    url: https://developer.android.com/jetpack/androidx/releases/room
+
+amplify:
+    type: Web
+    title: AWS Amplify
+    author: Amazon Web Services
+    url: https://docs.aws.amazon.com/amplify/
+
+cognito:
+    type: Web
+    title: AWS Cognito
+    author: Amazon Web Services
+    url: https://aws.amazon.com/it/cognito/
+
+android-studio:
+    type: Web
+    title: Android Studio
+    url: https://developer.android.com/studio
+
+agile:
+    type: Web
+    title: Manifesto for Agile Software Development
+    author: 
+        - Kent Beck
+        - Robert C. Martin 
+        - Martin Fowler
+        - altri
+    url: https://agilemanifesto.org/
+
+mad:
+    type: Web
+    title: Guide to app architecture
+    author: Google
+    url: https://developer.android.com/topic/architecture
+
+typescript:
+    type: Web
+    title: TypeScript
+    author: Microsoft
+    url: https://www.typescriptlang.org/
+
+swift:
+    type: Web
+    title: Swift
+    author: Apple
+    url: https://www.apple.com/it/swift/
+
+
+

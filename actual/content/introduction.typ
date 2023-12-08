@@ -2,25 +2,46 @@
 
 == Scopo del progetto
 
-Il progetto è nato con l'idea di creare una piattaforma di ricerca di luoghi dove poter lavorare in remoto o in _smart working_, questa idea è stata spinta dalla popolarità di questa modalità di lavoro in conseguenza al periodo pandemico del COVID, rimasta rilevante ancor oggi, dato che molte persone hanno visto un migliore bilancio vita-lavoro e le aziende che hanno visto un risparmio nelle risorse.
+Il progetto _Smart Offices_ è nato con l'idea di creare una piattaforma di ricerca di luoghi dove poter lavorare in remoto o in _smart working_ dovuta ad una grande diffusione di questa modalità di lavoro in conseguenza al periodo pandemico del COVID-19, rimasta rilevante anche dopo la pandemia dato che molte persone hanno visto un migliore bilancio vita-lavoro e le aziende hanno visto un risparmio nei costi e un aumento nella produttività. 
 
-Il progetto quindi si propone di creare una piattaforma che permetta di trovare luoghi dove poter lavorare in remoto, quindi luoghi come bar, ristoranti, biblioteche, ecc. che offrono la possibilità di lavorare in remoto; La piattaforma offre funzionalità di ricerca e filtri per trovare il luogo più adatto alle proprie esigenze, un utente può inoltre registrarsi e gli utenti registrati oltre ad consultare i luoghi possono aggiungerne nuovi luoghi, lasciare una recensione dei luoghi e salvare i luoghi nei preferiti. Il progetto nel insieme è suddiviso in tre parti:
+Il progetto quindi si propone di creare una piattaforma che permette di trovare luoghi dove poter lavorare in remoto: per esempio bar, ristoranti, biblioteche, ecc. che offrono la possibilità di lavorare in remoto; La piattaforma offre funzionalità di ricerca e filtri per trovare il luogo più adatto alle proprie esigenze. Un utente può inoltre registrarsi e gli utenti registrati, oltre a consultare i luoghi, possono aggiungere nuovi luoghi, lasciare recensioni sui luoghi e salvare i luoghi nei preferiti. 
+Il progetto nell'insieme è suddiviso in tre parti:
 
-- Parte *back-end* che si occupa di esporre i servizi per la ricerca luoghi, il caricamento dei luoghi, dei utenti e delle recensioni; fornisce i dati all'applicazione tramite API REST ed è scritto in Typescript. 
+- Parte *back-end* che si occupa di esporre i servizi per la ricerca luoghi, il caricamento dei luoghi, dei utenti e delle recensioni; fornisce i dati all'applicazione tramite API REST, è stato sviluppato usando servizi e tecnologie _AWS_ ed è scritto in _TypeScript_ @typescript;
 
-- Parte *mobile* che si occupa di mostrare i dati forniti dal back-end all'utente su dispositivi mobili, questa si divide in due applicazioni, una scritta in Kotlin per Android e l'altra in Swift per iOS, la parte iOS, sviluppata da un altro collega, utilizza il framework di UI _SwiftUI_ mentre la parte Android utilizza il framework di UI _Jetpack Compose_.
+#figure(
+    image("../resources/images/aws-logo.svg", width: 30%),
+    caption: [Logo di _Amazon Web Services_.]
+) <aws-logo>
 
-Il mio progetto di stage si è concentrato sul'applicazione scritta in Kotlin per Android. Il mio scopo era quello di effetuare le chiamate dal back-end ed implementare le funzionalità dell applicazione, quindi la ricerca dei luoghi, la visualizzazione dei dettagli di un luogo, il caricamento di un nuovo luogo, la registrazione e login, la visualizzazione delle recensioni di un luogo e la creazione di nuove recensioni.
+- Parte *mobile* che si occupa di mostrare i dati forniti dal back-end all'utente su dispositivi mobili: questa si divide in due applicazioni, una scritta in _Kotlin_ @kotlin per _Android_ e l'altra in _Swift_ @swift per _iOS_; la parte _iOS_, sviluppata da un altro collega, utilizza il framework di UI _SwiftUI_ mentre la parte Android utilizza il framework di UI _Jetpack Compose_ @compose.
+
+#figure(
+    image("../resources/images/compose-icon.png", width: 30%),
+    caption: [Logo di _Jetpack Compose_.]
+) <compose-logo>
+
+Il mio progetto di stage si è concentrato sull'applicazione scritta in *Kotlin* per *Android*. Il mio scopo era quello di effettuare le chiamate dal back-end remoto ed implementare le funzionalità dell'applicazione, cioè la ricerca dei luoghi, la visualizzazione dei dettagli di un luogo, il caricamento di un nuovo luogo, l'autenticazione utente, la registrazione di un nuovo account, la pagina del profilo utente, la visualizzazione delle recensioni di un luogo e la creazione di nuove recensioni, il tutto utilizzando le best practices di un'architettura che separa la logica di business dalla logica di presentazione.
+
+Il progetto è stato preceduto da un breve periodo di formazione tecnica seguito da una breve demo.
+
+Il progetto è stato accompagnato da una metodologia di lavoro agile @agile, con stand-up giornalieri di 15 minuti dove con il tutor aziendale si discuteva del lavoro fatto e del lavoro da fare.
 
 == L'azienda
 
-*Zero12* è una software house che propone prodotti innovativi e servizi di consulenza per la trasformazione digitale.
-L'azienda offre principalmente prodotti basati su Amazon Web Services, come infrastrutture cloud, software web e mobile e intelligenza artificiale. Altri campi di interesse sono la _Augmented Reality_ e l'_Internet of Things_.
+#figure(
+    image("../resources/images/logo-zero12.png", width: 30%),
+    caption: [Logo di _Zero12 s.r.l_.]
+) <compose-logo>
+
+*Zero12 s.r.l* è una software house che propone prodotti innovativi e servizi di consulenza per la trasformazione digitale, è parte del gruppo _Vargroup_.
+L'azienda offre principalmente prodotti basati su _Amazon Web Services_, come infrastrutture cloud, software web, mobile e intelligenza artificiale. Altri campi di interesse sono la _Augmented Reality_ e l'_Internet of Things_.
 
 L'azienda è in continua crescità e si divide in due sedi, una a Padova e una a Empoli.
 
 == Motivazione della scelta
 
-La prima volta che ho conosciuto l'azienda è stata durante il primo periodo del corso di ingegneria del software quando il mio gruppo doveva scegliere il capitolato per il progetto.
+La prima volta che ho conosciuto l'azienda è stata durante il primo periodo del corso di ingegneria del software quando il mio gruppo doveva scegliere il capitolato per il progetto, più tardi mi sono presentato all'evento *Stage IT 2023* dove sono andato a conoscenza dei loro progetti.
 
-Più tardi mi sono presentato all'evento *Stage IT 2023* dove sono andato a conoscenza dei loro progetti, quello che cercavo io per il stage era un qualcosa che mi mettesse alla prova in qualcosa di nuovo (anche se come preferenze accingevo comunque allo sviluppo mobile o web), ho scelto questo progetto dato che mi interessava l'ambito dello sviluppo _mobile_, ambito che io personalmente non avevo mai sperimentato ma mi interessava.
+Ho scelto questo progetto perché volevo cimentarmi in qualcosa di nuovo ma allo stesso tempo cercavo uno stage legato allo sviluppo mobile o web; quindi, ciò
+che mi ha spinto a scegliere questo progetto è stata la possibilità di lavorare con tecnologie mobile _Android_ e la possibilità di lavorare con un servizio remoto.

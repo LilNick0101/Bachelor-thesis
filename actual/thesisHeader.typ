@@ -42,6 +42,8 @@ align(center,[
         align(center)[
             Laureando \
             #data.student \
+            Matricola \
+            2008088
             ],
         align(center)[
             Relatore \
@@ -111,9 +113,7 @@ align(center,[
         numbering: "1"
     )
     
-    show link: set text(
-        style: "italic"
-    )
+    show link: it => underline(text(style: "italic",[#it]))
 
     show heading: it => {
     // Create the heading numbering.

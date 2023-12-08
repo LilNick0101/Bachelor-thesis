@@ -1,57 +1,74 @@
 #import "@preview/glossarium:0.2.0": gls
-#import "@preview/tablex:0.0.5": tablex, hlinex, vlinex, colspanx, rowspanx
 
 = Progettazione
 
-Per quanto riguarda il design dell'interfaccia grafica, sono partito da un mock-up già fatto del risultato finale come punto di partenza, alcuni componenti però sono stati modificati per adattarsi meglio al design di Android e per essere più semplici da interagire.
+Qui verrà spiegata la progettazione dell'applicazione, in particolare verrà spiegata l'architettura dell'applicazione e le scelte progettuali fatte, in sintesi ho deciso di utilizzare un'architettura a tre livelli e il pattern _MVVM_ (_Model-View-ViewModel_).
 
-In generale per la struttura architetturale mi sono fatto aiutare dalle tecnologie offerte da Android quindi ho deciso di utilizzare un architettura a 3 layer, composta dai seguenti layer:
+Per quanto riguarda il design dell'interfaccia grafica, sono partito da un mock-up già fatto del risultato finale come punto di partenza, modificando alcuni componenti per adattarli meglio al design di _Android_ e per renderli più semplici da interagire.
+
+In generale per la struttura architetturale ho cercato di seguire le best practices dell'architettura moderna di un'applicazione _Android_ quindi ho deciso di utilizzare un'architettura a tre livelli (o _layers_), composta dai seguenti livelli:
 
 - Il *livello UI* (_UI Layer_): contiene l'interfaccia grafica che mostra i dati all'utente e permette di interagire con l'applicazione.
 
-- Il *livello dati* (_Data Layer_): contiene la logica di business e i dati dell'applicazione, cioè le sorgenti dati dell'applicazione.
+- Il *livello dati* (_Data Layer_): contiene i dati dell'applicazione, la logica di business su di essi e le sorgenti dati dell'applicazione.
 
-- Il *livello dominio* (_Domain Layer_): contiene la logica di dominio dell'applicazione ed è utilizzato per semplificare e riutilizzare codice.
+- Il *livello dominio* (_Domain Layer_): è un livello facoltativo situato tra il livello UI e il livello dati ed è utilizzato per semplificare o riutilizzare codice.
 
 #figure(
-    image("../resources/images/mad-arch-overview.png", width: 80%),
-    caption: [Schema architettura a livelli.]
+    image("../resources/images/mad-arch-overview.png", width: 70%),
+    caption: [Schema architettura a livelli, da _Guide to app architecture_ @mad.]
 ) <Architettura>
+
+L'utilizzo di questa architettura porta un codice mantenibile, testabile, scalabile e con una buona separazione delle responsabilità tra i vari livelli.
 
 == Livello UI
 
-Lo scopo del *livello UI* (o *livello di presentazione*) si occupa di presentare i dati all'utente e di permettere all'utente di interagire con l'applicazione. Ad ogni interazione utente, l'interfaccia utente dovrebbe aggiornarsi per riflettere i nuovi dati.
+#figure(
+    image("../resources/images/mad-arch-overview-ui.png", width: 60%),
+    caption: [Schema livello UI, da _Guide to app architecture_ @mad.]
+) <Livello-UI>
 
-L'interfaccia grafica è rappresentata dai _Composable_ di Jetpack Compose, che sono dei componenti simili a delle funzioni di Kotlin che rappresentano elementi che verranno visualizzati nell'interfaccia grafica.
+Il *livello UI* (o *livello di presentazione*) si occupa di presentare i dati all'utente e di reagire all'input dell'utente. Ad ogni interazione utente, l'interfaccia utente si aggiorna per riflettere le modifiche.
 
-Inoltre ho utilizzato il pattern *MVVM* (*Model-View-ViewModel*) per separare la logica di business dalla logica di presentazione. In questo pattern, il ViewModel rappresenta il titolare dello stato dell'interfaccia grafica, contiene i dati da mostrare all'interfaccia grafica e ne gestisce la logica.
-Ogni schermata dell'applicazione ha un ViewModel associato, quindi ad esempio per la lista dei luoghi ci sarà un ViewModel associato che carica la lista dei luoghi dalla sorgente dati e li presenta a schermo, inoltre viene gestito l'input utente come la selezione di un filtro per la lista.
-L'implementazione di questo pattern risulta semplificata grazie all'utilizzo di Hilt, che permette di iniettare i ViewModel direttamente nella UI.
+L'interfaccia grafica è rappresentata dai _Composable_ di _Jetpack Compose_, cioè delle funzioni _Kotlin_ che rappresentano parti dell'interfaccia grafica come superfici, pulsanti, immagini, o elementi di layout come colonne, righe e griglie: ogni schermata dell'applicazione è un insieme di _Composable_ innestati.
+
+Ogni schermata ha un _ViewModel_ associato che si occupa di gestire la logica di presentazione della schermata e rappresenta il titolare dello stato dell'interfaccia grafica: contiene i dati da mostrare all'interfaccia grafica e scambia i dati con gli altri livelli.
+Per esempio, per la lista dei luoghi ci sarà un _ViewModel_ associato che carica la lista dei luoghi dalla sorgente dati e li presenta a schermo, inoltre viene gestito l'input utente come la selezione di un filtro per la lista.
 
 == Livello dati
 
-Il *livello dati* di un'app contiene la logica di business e si occupa ci come l'app crea, archivia e modifica i dati.
+#figure(
+    image("../resources/images/mad-arch-overview-data.png", width: 60%),
+    caption: [Schema livello dati, da _Guide to app architecture_ @mad.]
+) <Livello-dati>
 
-Per il livello dati ho utilizzato il pattern Repository, che è un pattern che permette di astrare la sorgente dei dati e di fornire un'interfaccia comune per accedere ai dati. In questo modo, il ViewModel non deve preoccuparsi di dove vengono salvati i dati, ma può semplicemente chiedere al Repository di fornirglieli. Le sorgenti dati da cui il Repository può recuperare i dati sono:
+Il *livello dati* di un'applicazione _Android_ contiene la logica di business e si occupa ci come l'applicazione crea, archivia e modifica i dati.
 
-- Il *database locale*, cioè il database Room. Il database locale è la sorgente principale dei dati, in quanto è la più veloce da accedere e permette di avere i dati disponibili anche offline. Il database locale è composto da una classe di database che, attraverso una classe DAO permette di prelevare o modificare i dati del database locale, la classe di DAO viene poi iniettata nei repository.
+Per il livello dati ho utilizzato il pattern repository, i *repository* si occupano di esporre i dati agli altri livelli, senza che essi sappiano da dove vengono questi dati, e si occupano della logica di business sui dati. Nel progetto ho creato un repository per ogni tipo di risorsa (luogo, utente ...) e questi repository scambiano dati con due sorgenti dati:
 
-- Il *back-end remoto*, che è il servizio REST che fornisce i dati. Il back-end remoto è la sorgente secondaria dei dati, in quanto è più lento da accedere e richiede una connessione a internet, ma permette di avere i dati sempre aggiornati. Una classe di servizio API viene creata per ogni endpoint.
+- Il *database locale*, cioè il database _Room_, è la fonte di riferimento dei dati in quanto è la più veloce da accedere e permette di avere i dati disponibili anche offline. Il database locale è composto da una classe di database che crea il database locale se non esiste già e, attraverso una classe DAO (_Data Access Object_), permette di prelevare o modificare i dati da esso; la classe DAO consente l'accesso alle tabelle del database locale. Il database locale è relazionale, per vederne la struttura consultare il diagramma ER nell'#link(label("db-scheme"),[appendice]), in sintesi ho cercato di avere una struttura simile alle risposte JSON del back-end remoto;
 
-Quando l'applicazione carica i dati, carica i dati dal database locale e poi sincronizza i dati del database con il back-end remoto, se necessario. In questo modo, l'applicazione può mostrare i dati anche offline e può mostrare i dati più aggiornati quando è connessa a internet.
+- Il *back-end remoto*, cioè il servizio API REST che fornisce i dati. Il back-end remoto è la sorgente secondaria dei dati, in quanto richiede una connessione a Internet, ma permette di avere i dati sempre aggiornati. Una classe di servizio API viene creata per ogni risorsa.
+
+Nel progetto quando l'applicazione carica i dati, prima carica i dati dalla fonte di riferimento e poi sincronizza i dati del database locale con il back-end remoto, salvando i dati nuovi nel database e aggiornando quelli già presenti. In questo modo, l'applicazione può mostrare i dati anche offline e può mostrare i dati più aggiornati quando è connessa ad Internet: questo approccio è detto sincronizzazione basata sul pull ed è quello che ho implementato nel progetto.
 
 == Livello di dominio
 
-Il *livello di dominio* è un livello posto in mezzo tra il livello dati e il livello di presentazione, è responsabile dell'incapsulamento di una logica di business più complessa o di logica che viene riutilizzata su più schermate. In questo livello si trovano le classi _UseCase_ che sono responsabili ciascuna di una _singola_ funzionalità.
+#figure(
+    image("../resources/images/mad-arch-overview-domain.png", width: 60%),
+    caption: [Schema livello di dominio, da _Guide to app architecture_ @mad.]
+) <Livello-dominio>
 
-Funziona che i ViewModel possono utilizzare le classi UseCase per ottenere dati complessi che necessitano di combinare dati da più Repository o per ottenere dati che necessitano di una elaborazione più complessa. 
+Il *livello di dominio* è un livello posto in mezzo tra il livello dati e il livello di presentazione, è responsabile dell'incapsulamento di una logica di business più complessa o di logica che viene riutilizzata su più _ViewModel_. In questo livello si trovano le classi *UseCase* che sono responsabili ciascuna di una singola funzionalità (si occupano di un solo _caso d'uso_).
 
-Un esempio può essere l'ottenimento dei dettagli di un luogo con l'autore associato, in questo caso viene creata una classe UseCase che prende i dati del luogo dal Repository dei luoghi e i dati dell'autore dalla repository dei utenti e li combina in un unico oggetto che viene mandato al ViewModel
+I _ViewModel_ possono utilizzare le classi *UseCase* per ottenere dati complessi che necessitano di combinare dati da più repository o per ottenere dati che necessitano di una elaborazione più complessa. 
 
-Questo layer è stato usato in modo _aperto_, nel senso che non tutti i ViewModel necessitano di UseCase e quindi si collegano direttamente al livello dati.
+Un esempio può essere l'ottenimento dei dettagli di un luogo con l'autore associato, in questo caso viene creata una classe _UseCase_ che prende i dati del luogo dal repository dei luoghi e i dati dell'autore dal repository degli utenti e li combina in un unico oggetto che viene mandato al _ViewModel_.
+
+Questo livello non è necessario se il progetto è abbastanza piccolo, a volte è possibile utilizzare direttamente i repository nei _ViewModel_, nel progetto è stato usato più a scopo educativo.
 
 == Dependency injection
 
 Il pattern *Dependency Injection* (In breve *DI*) è un pattern che permette di semplificare la gestione delle dipendenze tra le classi. In questo modo, invece di creare le dipendenze all'interno delle classi, le dipendenze vengono create all'esterno e poi passate alle classi che ne necessitano. Questo permette di semplificare la gestione delle dipendenze e di rendere il codice più testabile.
 
-Nel progetto è stato utilizzato il framework _Hilt_ per implementare il pattern Dependency Injection. Per esempio è stato utilizzato per iniettare le classi UseCase e i Repository nei ViewModel e le sorgenti dati nei repository.
+Nel progetto è stato utilizzato il framework _Hilt_ per implementare il pattern _DI_. Per esempio, è stato utilizzato per iniettare le classi _UseCase_ e i repository nei _ViewModel_ e le sorgenti dati nei repository.

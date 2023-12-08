@@ -1,34 +1,35 @@
 #import "@preview/glossarium:0.2.0": gls
 
-#set heading(numbering: "1.1.1")
-
+#v(10pt)
 = Analisi dei Requisiti
 
-I requisiti dell'applicazione sono stati individuati attraverso un'analisi dei casi d'uso e dei requisiti funzionali insieme al tutor aziendale ed ad altri collaboratori.
+I requisiti dell'applicazione sono stati individuati attraverso un'analisi dei casi d'uso e dei requisiti funzionali insieme al tutor aziendale e ad altri collaboratori durante il corso del progetto.
 
 All'inizio è stato pianificato che l'applicazione doveva avere le seguenti funzionalità:
 
-- *F1*: Lista dei luoghi (con funzione di ordinamento e filtraggio)
-- *F2*: Mappa dei luoghi (con funzione di filtraggio)
-- *F3*: Dettaglio di un luogo
-- *F4*: Caricamento di un luogo
-- *F5*: Pagina di login
-- *F6*: Pagina del profilo utente, con lista dei luoghi caricati e dei luoghi salvati
-- *F7*: Registrazione di un nuovo account
-- *F8*: Lista delle recensioni di un luogo
-- *F19*: Caricamento di una nuova recensione di un luogo
+- *F1*: Lista dei luoghi (con funzione di ordinamento e filtraggio);
+- *F2*: Mappa dei luoghi (con funzione di filtraggio);
+- *F3*: Visualizzazione in dettaglio di un luogo;
+- *F4*: Caricamento di un luogo;
+- *F5*: Pagina di login;
+- *F6*: Pagina del profilo utente, con lista dei luoghi caricati e dei luoghi salvati;
+- *F7*: Registrazione di un nuovo account;
+- *F8*: Lista delle recensioni di un luogo;
+- *F9*: Caricamento di una nuova recensione di un luogo.
+
+#pagebreak()
 
 == Tipi di utenti
 
 I tipi di utenti che utilizzano l'applicazione sono:
 
 #figure(
-    image("../resources/images/utenti.svg", width: 80%),
-    caption: [Relazione tra utenti registrati e non registrati.]
-) <Utenti>
+    image("../resources/images/utenti.svg", width: 50%),
+    caption: [Gerarchia dei tipi di utente.]
+) <utenti>
 
-- *Visitatore*: un utente generico, registrato o non che utilizza l'applicazione per visualizzare le informazioni sulle location;
-- *Ospite*: un utente che non ha effettuato l'accesso al suo account e che può quindi accedere solo alle funzionalità pubbliche dell'applicazione;
+- *Utente*: un utente generico, registrato o non che utilizza l'applicazione per visualizzare la lista dei luoghi, le informazioni in dettaglio dei luoghi, la mappa dei luoghi e la lista delle recensioni di un luogo;
+- *Ospite*: un utente che non ha effettuato l'accesso al suo account e che oltre ad aver accesso alle funzionalità dell'utente generico, può accedere al proprio account o registrarsi;
 - *Utente registrato*: un utente che ha effettuato l'accesso al suo account e che può quindi accedere alle funzionalità riservate agli utenti registrati, come caricare un nuovo luogo, salvare un luogo nei preferiti o caricare una nuova recensione.
 
 /*
@@ -359,45 +360,28 @@ Gli attori che utilizzano l'applicazione sono:
     + L'utente può filtrare la lista per nome, prezzo, caratteristiche o orario di apertura
     + L'utente visualizza la lista delle location filtrata secondo i filtri selezionati
 */
+
 == Requisiti
 
-Dalle funzionalità riportate sopra sono stati ricavati dei requisiti associati (per la lista completa dei requisiti, vedere #link(label("requirements-list"),[lista requsiti]) nell'appendice).
+Dalle funzionalità riportate sopra sono stati ricavati dei requisiti associati (per la lista completa dei requisiti, vedere #link(label("requirements-list"),[lista requisiti]) nell'appendice).
 
 Alcuni requisiti sono:
-- Per la lista dei luoghi, l'utente selezionando un luogo viene portato alla pagina di dettaglio del luogo;
-- Per la mappa dei luoghi, l'utente selezionando un luogo viene portato alla pagina di dettaglio del luogo similmente alla lista dei luoghi;
-- Per il dettaglio di un luogo, dovrebbero essere visualizzati i dettagli del luogo, tra cui nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini;
-- Per il caricamento di un luogo, l'utente deve inserire i dati richiesti per inserire il luogo, tra i quali: nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini;
-- Per la pagina di login, l'utente deve inserire email e password per effettuare il login, o accedere con un account Google;
-- Per la pagina del profilo utente, l'utente può visualizzare la lista dei luoghi caricati e dei luoghi salvati;
-- Per la registrazione di un nuovo account, l'utente deve inserire email e password;
-- Per il salvataggio di un luogo nei preferiti, l'utente deve selezionare il pulsante di salvataggio o può disfare il salvataggio nei preferiti;
-- Per il caricamento di una recensione, l'utente deve inserire il testo della recensione e può inserire una valutazione.
+- Per la *lista dei luoghi* l'utente selezionando un luogo viene portato alla pagina di dettaglio del luogo e un utente vuole ordinare la lista dei luoghi per distanza, valutazione o data d'inserimento;
+- Per la *mappa dei luoghi*, l'utente selezionando un luogo viene portato alla pagina di dettaglio del luogo similmente alla lista dei luoghi;
+- Per la *lista dei luoghi* e la *mappa dei luoghi* un utente può filtrare i luoghi per nome, prezzo, caratteristiche o orario di apertura;
+- Per la *visualizzazione in dettaglio di un luogo* dovrebbero essere visualizzati i dettagli del luogo, tra cui nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini;
+- Per la *lista dei luoghi*, la *mappa dei luoghi* e la *visualizzazione in dettaglio di un luogo* un utente registrato può salvare un luogo nei preferiti o rimuovere un luogo dai preferiti;
+- Per il *caricamento di un luogo* l'utente registrato deve inserire i dati richiesti per inserire il luogo, tra i quali: nome, indirizzo, descrizione, orari di apertura e chiusura, contatti, prezzo e una o più immagini;
+- Per la *pagina di login* un ospite può effettuare l'accesso con un account interno o con un account _Google_;
+- Per la *pagina del profilo utente* l'utente registrato può visualizzare la lista dei luoghi caricati, la lista dei luoghi salvati o effettuare il logout;
+- Per la *registrazione di un nuovo account* l'ospite deve inserire e-mail e password;
+- Per il *caricamento di una recensione* l'utente registrato deve inserire il testo della recensione e una valutazione.
 
-Nell'analisi dei requisiti sono stati individuati requisiti che sono condivisi tra più funzionalità, come per esempio il filtraggio dei luoghi che è presente sia nella lista che nella mappa e il salvataggio di un luogo nei preferiti che è presente sia nella lista, nella mappa che nel dettaglio del luogo.
+Nell'analisi dei requisiti sono stati individuati requisiti che sono condivisi tra più funzionalità, come per esempio il filtraggio dei luoghi che è presente sia nella lista che nella mappa e il salvataggio di un luogo nei preferiti che è presente nella lista, nella mappa e nel dettaglio del luogo.
 
-#figure(
-    table(
-        fill: (_, row) => if calc.odd(row) { luma(240) } else { white },
-        columns: (1fr, 1fr),
-        align: horizon,
-        [*Funzionalità*], [*Numero*],
-        [F1],[13],
-        [F2],[8],
-        [F3],[9],
-        [F4],[12],
-        [F5],[2],
-        [F6],[8],
-        [F7],[3],
-        [F8],[1],
-        [F9],[4]
-    ),
-    caption: [Conteggio requsiti per funzionalità di Smart Officies]
-)
+Oltre ai requisiti funzionali, ci sono dei *requisiti di vincolo* che sono stati individuati durante l'analisi dei requisiti, come l'utilizzo del linguaggio di programmazione _Kotlin_ e del toolkit UI _Jetpack Compose_ per lo sviluppo dell'applicazione.
 
-Oltre ai requisiti funzionali, ci sono dei requisiti di vincolo che sono stati individuati durante l'analisi dei requisiti, come l'utilizzo del linguaggio di programmazione Kotlin e del toolkit UI Jetpack Compose per lo sviluppo dell'applicazione.
-
-Per garantire la qualità del codice e dell'applicazione, sono stati individuati dei requisiti di qualità, quindi il codice del progetto deve trovarsi sulla Repository aziendale e deve passare tutte le Pull requests e l'applicazione deve essere funzionante anche in assenza di connesione ad internet.
+Per garantire la qualità del codice e dell'applicazione, sono stati individuati dei *requisiti di qualità*: il codice del progetto deve trovarsi sul repository aziendale, deve passare tutte le _Pull requests_ e l'applicazione deve essere funzionante anche in assenza di connessione ad Internet.
 
 #figure(
     table(
@@ -406,9 +390,9 @@ Per garantire la qualità del codice e dell'applicazione, sono stati individuati
         align: horizon,
         [*Tipo di requisito*], [*Numero*],
         [Funzionali],[49],
-        [Di vincolo],[5],
-        [Di qualità],[2],
+        [Di vincolo],[4],
+        [Di qualità],[3],
         [*Totali*],[56]
     ),
-    caption: [Conteggio requsiti di Smart Officies]
+    caption: [Conteggio requisiti dell'applicazione _Android_.]
 )
