@@ -68,7 +68,7 @@
 
 #pagebreak()
 
-#bibliography("./content/bibliography.yaml")
+#bibliography("./bibliography.yaml")
 
 
 // MUST DO
